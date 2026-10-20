@@ -1,0 +1,26 @@
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Backups and logs
+*.bak
+*.log
+
+# Nested Git repositories
+**/.git/
+
+# Generated application data
+projects/uber-use-docker-extra-plus/loki/data/
