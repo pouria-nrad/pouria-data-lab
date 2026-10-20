@@ -1,0 +1,38 @@
+
+name: Uber Project - Docker CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "projects/uber-use-docker-extra-plus/**"
+      - ".github/workflows/docker-ci.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "projects/uber-use-docker-extra-plus/**"
+      - ".github/workflows/docker-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  docker-build:
+    name: Validate and Build Docker Services
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: projects/uber-use-docker-extra-plus
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose config -q
+
+      - name: Build application images
+        run: docker compose build api matcher location simulator-alpha
